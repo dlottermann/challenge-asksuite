@@ -1,48 +1,42 @@
-const puppeteer = require('puppeteer')
-const cheerio = require('cheerio');
+const Chromy = require('chromy')
 
 module.exports = (app) => {
     app.get('/', (req, res, next) => { res.send('Page Not Found'); next(); })
-    app.post('/buscar', (req, res) => {
+    app.post('/buscar', (req, res,next) => {
         
-        console.log(req.body)
-        crawler(req.body.checkin,req.body.checkout).then((value) => {
-            console.log(value)
-        })
-
+       main(req.body.checkin,req.body.checkout)
+        .then((e) => {
+          res.send(e)
+          next();
+        }).catch(err => console.log(err))
+     
     })
 }
 
+  //async function
+  async function main (checkin,checkout) {
+    let chromy = new Chromy()
+    await chromy.goto(`https://myreservations.omnibees.com/default.aspx?q=5462&version=MyReservation&sid=c1946547-5754-4e23-b840-bd6a0947765f#/&diff=false&CheckIn=${checkin}&CheckOut=${checkout}&Code=&group_code=&loyality_card=&NRooms=1&ad=1&ch=0&ag=-`)
+    const result = await chromy.evaluate(() => {
 
-let crawler = async (checkin,checkout) => {
-    const browser = await puppeteer.launch({headless: true})
-    const page = await browser.newPage()
-    await page.goto(`https://myreservations.omnibees.com/chain.aspx?c=2983&lang=pt-br&ad=2&_ga=2.238751430.716354957.1579641949-1912644431.1579356793&_ga=2.238751430.716354957.1579641949-1912644431.1579356793&sid=f4553988-834a-4060-b50f-e758621ea624&version=MyReservation#/hotel=&hotelname=&CheckIn=${checkin}&CheckOut=${checkout}&Code=&group_code=&loyality_card=&NRooms=1&ad=2&ch=0&ag=-`)
-    await page.waitFor(1000)
+        
+          const hoteis = []
+           //scrap loop of elements                
+          document.querySelectorAll('.roomExcerpt').forEach(item => {
+             
+            item.querySelectorAll('h5 > a').forEach(hotel => hoteis.push({'title':hotel.textContent}))
+            item.querySelectorAll('.sincePriceContent > h6').forEach(hotel => hoteis.push({'price':hotel.textContent}))
+            item.querySelectorAll('a.description').forEach(hotel => hoteis.push({'description':hotel.textContent}))
+            item.querySelectorAll('.slide > a').forEach(hotel => hoteis.push({'pictures':hotel.href}))
+            item.querySelectorAll('.slide > a > img').forEach(hotel => hoteis.push({'thumbnail':hotel.src}))
+         
+        })
+      
+          return hoteis
+
+          })
+          
     
-    // crawler
-    const result = await page.evaluate(() => {
-      const titles = []
-      const address = []
-      const description = []
-      const price = []
-      const pictures = []
-      const capa = []
-  
-      const total  = document.querySelectorAll('.available').length
-  
-      document.querySelectorAll('h5 > a').forEach(hotel => titles.push(hotel.title))
-      document.querySelectorAll('.address').forEach(hotel => address.push(hotel.textContent))
-      document.querySelectorAll('.description p:first-child').forEach(hotel => description.push(hotel.textContent))
-      document.querySelectorAll('.bestChainPriceTextColor').forEach(hotel => price.push(hotel.textContent))
-  
-      document.querySelectorAll('.thumb > a').forEach(hotel => pictures.push(hotel.href))
-      document.querySelectorAll('.image > a').forEach(hotel => capa.push(hotel.href))
-  
-      return total
-    });
-    
-    browser.close()
+    await chromy.close()
     return result
-  };
-  
+  }
