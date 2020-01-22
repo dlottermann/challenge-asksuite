@@ -54,3 +54,39 @@ Exemplo de request com formato JSON:
     "checkout": "09022020"
 }
 ```
+
+Exemplo de retorno com formato JSON:
+----
+
+```json
+[
+    {
+        "title": "Luxo Superior"
+    },
+    {
+        "price": "R$ 732,74"
+    },
+    {
+        "description": "Exclusividade e requinte. Todos os quartos luxo superior contam com Ar climatizado, TV LCD 32”, SKY, frigobar, telefone, cofre e secador ... "
+    },
+    {
+        "pictures": "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?imageID=152623.jpg"
+    },
+    {
+        "pictures": "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?imageID=152624.jpg"
+    },
+    {
+        "pictures": "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?imageID=152625.jpg"
+    },
+    {
+        "thumbnail": "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?sz=250x166&imageID=152623.jpg"
+    },
+    {
+        "thumbnail": "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?sz=250x166&imageID=152624.jpg"
+    },
+    {
+        "thumbnail": "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?sz=250x166&imageID=152625.jpg"
+    }
+]
+```
+
