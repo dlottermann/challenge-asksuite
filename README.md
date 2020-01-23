@@ -40,7 +40,7 @@ As requisições podem ser feitas através de softwares com postman ou insomnia.
 
 -- O endpoint disponibilizado é /buscar pelo método POST
 
--- A URL final de request rodando localmente deve ficar como ###localhost:3000
+-- A URL final de request rodando localmente deve ficar como ### localhost:3000
 
 -- O body da requeste deve conter dois parâmetros **checkin** e **checkout**
 
