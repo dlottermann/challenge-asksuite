@@ -61,31 +61,31 @@ Exemplo de retorno com formato JSON:
 ```json
 [
     {
-        "title": "Luxo Superior"
-    },
-    {
-        "price": "R$ 732,74"
-    },
-    {
-        "description": "Exclusividade e requinte. Todos os quartos luxo superior contam com Ar climatizado, TV LCD 32”, SKY, frigobar, telefone, cofre e secador ... "
-    },
-    {
-        "pictures": "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?imageID=152623.jpg"
-    },
-    {
-        "pictures": "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?imageID=152624.jpg"
-    },
-    {
-        "pictures": "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?imageID=152625.jpg"
-    },
-    {
-        "thumbnail": "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?sz=250x166&imageID=152623.jpg"
-    },
-    {
-        "thumbnail": "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?sz=250x166&imageID=152624.jpg"
-    },
-    {
-        "thumbnail": "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?sz=250x166&imageID=152625.jpg"
+        "title": "Standard",
+        "price": "R$ 867,14",
+        "description": "Ideal para relaxar. Os quartos dispõem de diversos serviços para garantir uma estadia confortável e agradável. Todos os apartamentos Stan... ",
+        "pictures": [
+            "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?imageID=189952.jpg",
+            "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?imageID=152609.jpg",
+            "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?imageID=189950.jpg",
+            "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?imageID=152620.jpg",
+            "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?imageID=152621.jpg",
+            "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?imageID=189959.jpg",
+            "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?imageID=152623.jpg",
+            "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?imageID=152624.jpg",
+            "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?imageID=152625.jpg"
+        ],
+        "thumbs": [
+            "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?sz=250x166&imageID=189952.jpg",
+            "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?sz=250x166&imageID=152609.jpg",
+            "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?sz=250x166&imageID=189950.jpg",
+            "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?sz=250x166&imageID=152620.jpg",
+            "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?sz=250x166&imageID=152621.jpg",
+            "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?sz=250x166&imageID=189959.jpg",
+            "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?sz=250x166&imageID=152623.jpg",
+            "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?sz=250x166&imageID=152624.jpg",
+            "https://myreservations.omnibees.com/Handlers/ImageLoader.ashx?sz=250x166&imageID=152625.jpg"
+        ]
     }
 ]
 ```
