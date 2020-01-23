@@ -50,16 +50,24 @@ async function main(checkin, checkout) {
     const result = await chromy.evaluate(() => {
 
 
+       
         const hoteis = []
+        const pictures = []
+        const thumbs = []
         //scrap loop of elements                
         document.querySelectorAll('.roomExcerpt').forEach(item => {
+            let acomod = {}
+         
+             item.querySelectorAll('h5 > a').forEach(hotel =>  acomod.title = hotel.textContent )
+             item.querySelectorAll('.sincePriceContent > h6').forEach(hotel => acomod.price =  hotel.textContent )
+             item.querySelectorAll('a.description').forEach(hotel => acomod.description = hotel.textContent)
+             item.querySelectorAll('.slide > a').forEach(hotel => pictures.push(hotel.href))
+             item.querySelectorAll('.slide > a > img').forEach(hotel => thumbs.push(hotel.src))
 
-            item.querySelectorAll('h5 > a').forEach(hotel => hoteis.push({ 'title': hotel.textContent }))
-            item.querySelectorAll('.sincePriceContent > h6').forEach(hotel => hoteis.push({ 'price': hotel.textContent }))
-            item.querySelectorAll('a.description').forEach(hotel => hoteis.push({ 'description': hotel.textContent }))
-            item.querySelectorAll('.slide > a').forEach(hotel => hoteis.push({ 'pictures': hotel.href }))
-            item.querySelectorAll('.slide > a > img').forEach(hotel => hoteis.push({ 'thumbnail': hotel.src }))
+            acomod.pictures =  pictures 
+            acomod.thumbs =  thumbs 
 
+            hoteis.push(acomod)    
         })
 
         return hoteis
